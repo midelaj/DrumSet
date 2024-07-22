@@ -11,7 +11,9 @@ for (var i = 0; i < numberOfDrums; i++) {
 
 
 document.addEventListener("keypress", function (event) {
+
     makeSound(event.key)
+    animation(event.key)
 })
 
 
@@ -49,4 +51,17 @@ function makeSound(key) {
         default:
             console.log(buttonClicked);
     }
+
+    animation(key)
+}
+
+
+function animation(currenKey) {
+    var active = document.querySelector("." + currenKey);
+
+    active.classList.add("pressed");
+    setTimeout(function () {
+        active.classList.remove("pressed")
+    }, 100)
+
 }
